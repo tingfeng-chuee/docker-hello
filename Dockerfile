@@ -1,5 +1,5 @@
 FROM alpine
-MAINTAINER uli.hitzel@gmail.com
+MAINTAINER t0921224@u.nus.edu
 EXPOSE 8080
 RUN apk update
 RUN apk add python2
