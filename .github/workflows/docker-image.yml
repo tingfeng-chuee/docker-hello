@@ -28,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: cicddemo:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicddemo:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
