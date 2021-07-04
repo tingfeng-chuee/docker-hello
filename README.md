@@ -1,50 +1,26 @@
-# Hello World Docker Container
+# CI/CD Demo Docker Container
 
 pushed to [Docker Hub
-](https://hub.docker.com/r/u1ih/hello)
+](https://hub.docker.com/repository/docker/tingnus/cicddemo)
 
 Run with:
 
-`docker run -d -p 8080:8080 u1ih/hello`
+`docker run -d -p 8080:8080 tingnus/cicddemo`
+
+This demo shows the convenience of using a yml file to define a series of steps to automatically build and push Docker Container Image to DockerHub when this GitHub repository is updated, as part of the continous integration process. The steps are adapted from the example shown in https://github.com/marketplace/actions/build-and-push-docker-images
 
 Steps:
 
-## 1: Get Source
+## 1: Set up Docker Buildx
 
-`git clone https://github.com/u1i/docker-hello`
+Create and boot a builder using by default the docker-container builder driver.
 
-## 2: Make changes
+## 2: Login to DockerHub
 
-modify index.html in the app directory
+Login to DockerHub so that Docker Container Image can be pushed after it is built.
 
-## 3: Build Container
+## 3: Build and Push
 
-change into the directory: 
-`cd docker-hello`
+Build Docker Container Image based on instructions in Dockerfile (Dockerfile is not specified in yml file because it is at the default location of {context}/Dockerfile). Then, this Docker Container Image is pushed to DockerHub repository at https://hub.docker.com/repository/docker/tingnus/cicddemo.
 
-`docker build . -t myhello`
-
-## 4: Run Container
-
-`docker run -d -p 8080:8080 myhello`
-
-If you experience an error message, you may have another (the previous?) container running on the same port. In this case use this command to kill all running containers:
-
-`docker kill $(docker ps -q)`
-
-and then try again :-)
-
-## 5: Optional: Publish to Dockerhub
-
-For this you need to sign up at https://hub.docker.com/ – and get a little familiar with it as well. If you're completely new to this, please ignore this part for now.
-
-`docker tag myhello <YOUR_USERNAME>/hello:<VERSION_NUMBER>`
-
-`docker tag myhello <YOUR_USERNAME>/hello:latest`
-
-`docker login`
-
-`docker push <YOUR_USERNAME>/hello:<VERSION_NUMBER>`
-
-`docker push <YOUR_USERNAME>/hello:latest`
 
