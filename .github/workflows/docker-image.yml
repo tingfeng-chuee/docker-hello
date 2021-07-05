@@ -20,17 +20,15 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          username: tingnus
-          password: 123Dockerpassword
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: tingnus/cicddemo:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicddemo:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-        
-    
