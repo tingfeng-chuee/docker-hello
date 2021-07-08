@@ -1,4 +1,4 @@
-# CI/CD Demo Docker Container EDIT!!!
+# CI/CD Demo Docker Container
 
 pushed to [Docker Hub
 ](https://hub.docker.com/repository/docker/tingnus/cicddemo)
